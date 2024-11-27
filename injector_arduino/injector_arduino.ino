@@ -42,28 +42,38 @@ void parsing()
         switch (ints[0])
         {
         case 0: // изменение частоты сигнала
+        {
             if (ints[1] < 1)
             {
                 frequency = 1;
             }
-            if (ints[1] > 500)
+            else if (ints[1] > 500)
             {
                 frequency = 500;
+            }
+            else
+            {
+                frequency = ints[1];
             }
             if (start_status)
             {
                 PWMrefresh();
             }
             break;
+        }
         case 1: // изменение заполнения сигнала
         {
             if (ints[1] < 0)
             {
                 duty = 0;
             }
-            if (ints[1] > 255)
+            else if (ints[1] > 255)
             {
                 duty = 255;
+            }
+            else
+            {
+                duty = ints[1];
             }
             if (start_status)
             {
@@ -80,7 +90,9 @@ void parsing()
         case 3: // стоп
         {
             start_status = 0;
-            pwmWrite(outPWM, 0);
+            duty = 0;
+            frequency = 1;
+            PWMrefresh();
             break;
         }
         }

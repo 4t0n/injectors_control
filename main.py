@@ -42,6 +42,8 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def stop_work(self):
         self.serial_port.serial_send([3])
+        self.ui.FrequencyValue.display(0)
+        self.ui.FrequencyBox.setValue(1)
         self.ui.DutyValue.display(0)
         self.ui.DutyBox.setValue(0)
 

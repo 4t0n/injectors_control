@@ -33,6 +33,10 @@ class SerialPort(QtWidgets.QMainWindow):
                 self.ui.StopButton.setEnabled(True)
                 self.ui.CloseSerial.setEnabled(True)
                 self.ui.OpenSerial.setEnabled(False)
+                self.ui.DutyValue.display(0)
+                self.ui.FrequencyValue.display(1)
+                self.ui.FrequencyBox.setValue(1)
+                self.ui.DutyBox.setValue(0)
             else:
                 raise Exception
         except Exception:
