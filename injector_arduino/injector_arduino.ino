@@ -24,6 +24,18 @@ void setup()
 void loop()
 {
     parsing();
+    static uint32_t tmr = 0;
+    if (millis() - tmr > 100) 
+    {
+      tmr = millis();
+      Serial.print(0);
+      Serial.print(',');
+      Serial.print(frequency);
+      Serial.print(',');
+      Serial.print(duty);
+      Serial.print(',');
+      Serial.println(start_status);
+    }
 }
 
 void PWMrefresh()

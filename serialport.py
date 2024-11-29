@@ -24,19 +24,12 @@ class SerialPort(QtWidgets.QMainWindow):
         try:
             self.serial.setPortName(self.ui.ComboSerial.currentText())
             if self.serial.open(QIODevice.ReadWrite):
-                self.ui.SerialStatus.setStyleSheet(
-                    'background-color: green;' 'border: 2px solid black;'
-                )
                 self.ui.FrequencyButton.setEnabled(True)
                 self.ui.DutyButton.setEnabled(True)
                 self.ui.StartButton.setEnabled(True)
                 self.ui.StopButton.setEnabled(True)
                 self.ui.CloseSerial.setEnabled(True)
                 self.ui.OpenSerial.setEnabled(False)
-                self.ui.DutyValue.display(0)
-                self.ui.FrequencyValue.display(1)
-                self.ui.FrequencyBox.setValue(1)
-                self.ui.DutyBox.setValue(0)
             else:
                 raise Exception
         except Exception:
@@ -54,6 +47,9 @@ class SerialPort(QtWidgets.QMainWindow):
         self.ui.StopButton.setEnabled(False)
         self.ui.CloseSerial.setEnabled(False)
         self.ui.OpenSerial.setEnabled(True)
+        self.ui.StartButton.setStyleSheet(
+            'background-color: rgb(209, 209, 209)'
+        )
 
     def serial_send(self, data):
         self.serial.setPortName(self.ui.ComboSerial.currentText())
