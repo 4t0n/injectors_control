@@ -212,7 +212,7 @@ class Ui_MainWindow(object):
         font.setPointSize(16)
         self.DutyBox.setFont(font)
         self.DutyBox.setMinimum(0)
-        self.DutyBox.setMaximum(100)
+        self.DutyBox.setMaximum(255)
         self.DutyBox.setProperty("value", 0)
         self.DutyBox.setObjectName("DutyBox")
         self.verticalLayout_2.addWidget(self.DutyBox)
@@ -347,7 +347,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Тест форсунок"))
         self.CloseSerial.setText(_translate("MainWindow", "Отключить"))
         self.SerialStatusLabel.setText(
             _translate("MainWindow", "Статус подключения")
