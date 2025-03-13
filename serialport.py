@@ -24,6 +24,9 @@ class SerialPort(QtWidgets.QMainWindow):
         try:
             self.serial.setPortName(self.ui.ComboSerial.currentText())
             if self.serial.open(QIODevice.ReadWrite):
+                self.ui.SerialStatus.setStyleSheet(
+                    'background-color: green;' 'border: 2px solid black;'
+                )
                 self.ui.FrequencyButton.setEnabled(True)
                 self.ui.DutyButton.setEnabled(True)
                 self.ui.StartButton.setEnabled(True)

@@ -7,7 +7,8 @@
 #include <unicode.h>
 #include <url.h>
 #include <AsyncStream.h>
-#define outPWM 9 // пин для генератора сигналов (не менять) - это выход на Мосфет управления форсунками.
+#define outPWM1 9 // пин для генератора сигналов (не менять) - это выход на Мосфет управления форсунками.
+#define outPWM2 10
 
 AsyncStream<50> serial(&Serial, ';');
 unsigned int frequency = 1; // стартовое значение частоты в Гц
@@ -18,7 +19,8 @@ void setup()
 {
     Serial.begin(115200);
     InitTimersSafe();
-    SetPinFrequencySafe(outPWM, frequency);
+    SetPinFrequencySafe(outPWM1, frequency);
+    SetPinFrequencySafe(outPWM2, frequency);
 }
 
 void loop()
@@ -40,8 +42,10 @@ void loop()
 
 void PWMrefresh()
 {
-    SetPinFrequencySafe(outPWM, frequency);
-    pwmWrite(outPWM, duty);
+    SetPinFrequencySafe(outPWM1, frequency);
+    SetPinFrequencySafe(outPWM2, frequency);
+    pwmWrite(outPWM1, duty);
+    pwmWrite(outPWM2, duty);
 }
 
 void parsing()
