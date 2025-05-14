@@ -64,7 +64,7 @@ class MyWindow(QtWidgets.QMainWindow):
                             "background-color: red;"
                         )
                     self.ui.ImpulseTime.display(
-                        f"{((1 / int(data[1])) * (int(data[2]) / 255)) * 1000:.3f}"
+                        f"{((1 / int(data[1])) * (int(data[2]) / 255)) * 1000:.2f}"
                     )
                 print(data)
             except (IndexError, UnicodeDecodeError, ValueError):
